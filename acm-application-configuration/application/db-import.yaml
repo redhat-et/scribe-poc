@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: importer 
+  namespace: scribe
+spec:
+  template:
+    spec:
+      containers:
+      - name: importer 
+        image: quay.io/rcook/storefront:db
+        env:
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: database-user
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: database-password
+        command: ["/bin/bash","-c"]
+        args: ["curl https://raw.githubusercontent.com/cooktheryan/SimpleStore/master/Database/store.sql -o /tmp/store.sql ; /usr/bin/mysql -h mysql -u ${MYSQL_USER} --password=${MYSQL_PASSWORD} -D store < /tmp/store.sql"]
+      restartPolicy: Never
+  backoffLimit: 4
+
