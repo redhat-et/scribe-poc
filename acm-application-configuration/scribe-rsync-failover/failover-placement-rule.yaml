@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: failover-cluster
+  namespace: scribe
+  labels:
+    name: failover
+spec:
+  clusterSelector:
+    matchLabels:
+      name: failover
+  clusterReplicas: 1
