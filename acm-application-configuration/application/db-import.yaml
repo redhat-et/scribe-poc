@@ -23,5 +23,3 @@ spec:
         command: ["/bin/bash","-c"]
         args: ["curl https://raw.githubusercontent.com/cooktheryan/SimpleStore/master/Database/store.sql -o /tmp/store.sql ; /usr/bin/mysql -h mysql -u ${MYSQL_USER} --password=${MYSQL_PASSWORD} -D store < /tmp/store.sql"]
       restartPolicy: Never
-  backoffLimit: 4
-
