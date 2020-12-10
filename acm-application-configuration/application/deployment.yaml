@@ -7,12 +7,14 @@ spec:
   selector:
     matchLabels:
       app: uploader 
+      tier: uploader
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: uploader 
+        tier: uploader
     spec:
       containers:
       - image: quay.io/rcook/tools:demo
