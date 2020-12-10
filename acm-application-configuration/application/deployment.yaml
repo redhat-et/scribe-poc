@@ -4,6 +4,7 @@ metadata:
   namespace: uploader
 spec:
   selector:
+      app: uploader 
   strategy:
     type: Recreate
   template:
