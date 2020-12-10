@@ -2,8 +2,8 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   labels:
-    app: export
-  name: export-placement-0
+    app: uploader
+  name: uploader-placement-0
   namespace: uploader
   resourceVersion: "329866"
 spec:

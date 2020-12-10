@@ -2,15 +2,15 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
   labels:
-    app: export
+    app: uploader
   annotations:
     apps.open-cluster-management.io/github-path: acm-application-configuration/application
     apps.open-cluster-management.io/github-branch: main
-  name: export-subscription-0
+  name: uploader-subscription-0
   namespace: uploader
 spec:
   channel: uploader/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: export-placement-0
+      name: uploader-placement-0
