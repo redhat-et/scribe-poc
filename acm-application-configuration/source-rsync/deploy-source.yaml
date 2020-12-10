@@ -36,15 +36,15 @@ subjects:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: scribe-rsync-source
+  name: uploader-rsync-source
 spec:
   template:
     metadata:
-      name: scribe-rsync-source
+      name: uploader-rsync-source
       labels:
         app.kubernetes.io/name: rsync-source
         app.kubernetes.io/component: mover
-        app.kubernetes.io/part-of: scribe
+        app.kubernetes.io/part-of: uploader
     spec:
       containers:
         - name: rsync
@@ -52,7 +52,7 @@ spec:
           env:
             - name: DESTINATION_ADDRESS
               value: ac96b981383304b519defbd5ad89d750-a4fc2845d395b0d4.elb.us-east-1.amazonaws.com
-          image: quay.io/backube/scribe-mover-rsync:latest
+          image: quay.io/backube/uploader-mover-rsync:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             runAsUser: 0

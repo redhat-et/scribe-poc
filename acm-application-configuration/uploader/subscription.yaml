@@ -1,16 +1,16 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: store
-  namespace: scribe
+  name: file
+  namespace: uploader
   labels:
-    name: store
+    name: file
   annotations:
     apps.open-cluster-management.io/github-path: acm-application-configuration/application
     apps.open-cluster-management.io/github-branch: main
 spec:
-  channel: scribe/store
+  channel: uploader/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: store
+      name: file

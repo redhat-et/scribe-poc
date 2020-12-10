@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: primary-cluster
-  namespace: scribe
+  namespace: uploader
   labels:
     name: primary
 spec:

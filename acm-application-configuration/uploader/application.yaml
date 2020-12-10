@@ -3,9 +3,9 @@ kind: Application
 metadata:
   annotations:
     apps.open-cluster-management.io/deployables: ""
-    apps.open-cluster-management.io/subscriptions: scribe/primary
-  name: primary
-  namespace: scribe
+    apps.open-cluster-management.io/subscriptions: uploader/file
+  name: file-placement
+  namespace: uploader
 spec:
   componentKinds:
   - group: apps.open-cluster-management.io
@@ -16,4 +16,4 @@ spec:
     - key: name
       operator: In
       values:
-      - primary
+      - file

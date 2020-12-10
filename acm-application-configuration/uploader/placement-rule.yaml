@@ -1,12 +1,12 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: store
-  namespace: scribe
+  name: file
+  namespace: uploader
   labels:
-    purpose: store
+    purpose: uploader 
 spec:
   clusterSelector:
     matchLabels:
-      purpose: store
+      purpose: uploader
   clusterReplicas: 1
