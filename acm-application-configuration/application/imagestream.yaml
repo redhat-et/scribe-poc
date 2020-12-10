@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/component: uploader
     app.kubernetes.io/instance: uploader
   name: uploader
-  namespace: file
+  namespace: uploader
 spec:
   lookupPolicy:
     local: false
