@@ -1,0 +1,41 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: uploader
+    app.kubernetes.io/component: uploader
+    app.kubernetes.io/instance: uploader
+  name: uploader
+  namespace: file
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: uploader:latest
+  postCommit: {}
+  resources: {}
+  source:
+    git:
+      uri: https://github.com/cooktheryan/uploader.git
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: php:7.3-ubi8
+        namespace: openshift
+    type: Source
+  triggers:
+  - github:
+      secret: _j8zdTYzYvY8DhJjOdtc
+    type: GitHub
+  - generic:
+      secret: UMj8Lw-ZXCwQZ-y-RrqR
+    type: Generic
+  - type: ConfigChange
+  - imageChange: {}
+   type: ImageChange

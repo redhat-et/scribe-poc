@@ -1,0 +1,52 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: uploader
+    app.kubernetes.io/component: uploader
+    app.kubernetes.io/instance: uploader
+  name: uploader
+  namespace: file
+spec:
+  replicas: 1
+  selector:
+    deploymentconfig: uploader
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        deploymentconfig: uploader
+    spec:
+      containers:
+      - image: uploader:latest
+        name: uploader
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /opt/app-root/src/uploaded
+          name: uploaded
+      volumes:
+      - name: uploaded
+        persistentVolumeClaim:
+          claimName: upload
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - uploader
+      from:
+        kind: ImageStreamTag
+        name: uploader:latest
+    type: ImageChange

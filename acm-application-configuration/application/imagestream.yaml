@@ -1,0 +1,17 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: uploader
+    app.kubernetes.io/component: uploader
+    app.kubernetes.io/instance: uploader
+  name: uploader
+  namespace: file
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: ""
