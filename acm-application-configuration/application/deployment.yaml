@@ -2,12 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: uploader
+  name: uploader
 spec:
   selector:
+    matchLabels:
       app: uploader 
   strategy:
     type: Recreate
   template:
+    metadata:
+      labels:
+        app: uploader 
     spec:
       containers:
       - image: quay.io/rcook/tools:demo
