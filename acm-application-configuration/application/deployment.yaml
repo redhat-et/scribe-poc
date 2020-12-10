@@ -4,16 +4,9 @@ metadata:
   namespace: uploader
 spec:
   selector:
-    matchLabels:
-      app: store
-      tier: mysql
   strategy:
     type: Recreate
   template:
-    metadata:
-      labels:
-        app: store
-        tier: mysql
     spec:
       containers:
       - image: quay.io/rcook/tools:demo
