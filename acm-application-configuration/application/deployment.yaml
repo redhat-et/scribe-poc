@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: uploader
+spec:
+  selector:
+    matchLabels:
+      app: store
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: store
+        tier: mysql
+    spec:
+      containers:
+      - image: quay.io/rcook/tools:demo
+        name: uploader
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /opt/app-root/src/uploaded
+          name: uploaded
+      volumes:
+      - name: uploaded
+        persistentVolumeClaim:
+          claimName: upload
