@@ -7,7 +7,6 @@ metadata:
 spec:
   rsync:
     serviceType: LoadBalancer
-    copyMethod: None
-    destinationPVC: uploader
+    copyMethod: Snapshot 
     capacity: 2Gi
     accessModes: [ReadWriteOnce]
