@@ -1,0 +1,14 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: upload-source
+  namespace: uploader 
+spec:
+  sourcePVC: upload
+  trigger:
+    schedule: "*/3 * * * *"
+  rsync:
+    sshKeys: scribe-rsync-dest-src-database-destination
+    address: my.host.com
+    copyMethod: Clone
