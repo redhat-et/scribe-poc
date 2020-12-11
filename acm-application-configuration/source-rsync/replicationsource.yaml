@@ -9,6 +9,6 @@ spec:
   trigger:
     schedule: "*/3 * * * *"
   rsync:
-    sshKeys: scribe-rsync-dest-src-database-destination
+    sshKeys: scribe-rsync-dest-dest-uploader-destination
     address: my.host.com
-    copyMethod: Clone
+    copyMethod: Snapshot
