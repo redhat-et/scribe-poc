@@ -1,10 +1,7 @@
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  annotations:
-    apps.open-cluster-management.io/deployables: ""
-    apps.open-cluster-management.io/subscriptions: uploader/failover
-  name: failover
+  name: replication 
   namespace: uploader
 spec:
   componentKinds:
@@ -13,7 +10,7 @@ spec:
   descriptor: {}
   selector:
     matchExpressions:
-    - key: name
+    - key: app
       operator: In
       values:
-      - failover
+      - replication 
