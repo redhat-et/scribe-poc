@@ -6,7 +6,7 @@ metadata:
   namespace: uploader 
 spec:
   rsync:
-    serviceType: ClusterIP
+    serviceType: Loadbalancer 
     copyMethod: Snapshot
     capacity: 2Gi
     accessModes: [ReadWriteOnce]
