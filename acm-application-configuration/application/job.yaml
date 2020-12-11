@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: transfer-pvc 
+spec:
+  template:
+    spec:
+      containers:
+      - name: snapshot-to-pvc
+        image: registry.redhat.io/openshift4/ose-cli:latest
+        command: ["/bin/bash","/mover/transfer.sh"]
+        volumeMounts:
+        - name: transfer-volume
+          mountPath: /mover
+      serviceAccount: transfer
+      volumes:
+        - name: transfer-volume
+          configMap:
+            name: transfer
+      restartPolicy: Never
+  backoffLimit: 4
