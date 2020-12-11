@@ -5,7 +5,6 @@ metadata:
     app: uploader
   name: uploader-placement-0
   namespace: uploader
-  resourceVersion: "329866"
 spec:
   clusterSelector:
     matchExpressions: []
