@@ -9,6 +9,6 @@ spec:
   trigger:
     schedule: "*/3 * * * *"
   rsync:
-    sshKeys: scribe-rsync-dest-dest-uploader-destination
+    sshKeys: scribe-rsync-dest-src-uploader-destination
     address: a5a460514f390454e8b6d669baba78d0-265871488.us-west-2.elb.amazonaws.com 
     copyMethod: Snapshot
