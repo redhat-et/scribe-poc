@@ -7,8 +7,8 @@ metadata:
 spec:
   sourcePVC: upload
   trigger:
-    schedule: "*/3 * * * *"
+    schedule: "*/2 * * * *"
   rsync:
     sshKeys: scribe-rsync-dest-src-uploader-destination
-    address: ae866d50a9e664318b05979b460ee7a5-2f8b202f4170b652.elb.us-west-2.amazonaws.com
+    address: a1a491d890cfe4594bd74b68a8c1d179-48c8758f09b35ec9.elb.us-west-2.amazonaws.com
     copyMethod: Snapshot
