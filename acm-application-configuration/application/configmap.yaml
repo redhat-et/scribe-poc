@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  transfer.sh: "if [[ $(kubectl get replicationdestination uploader-destination |
+    grep -v NAME | awk '{print $1}' > /dev/null 2>&1) ]]; then\n\tcat <<EOF | kubectl
+    create -f -\n\tapiVersion: v1\n\tkind: PersistentVolumeClaim\n\tmetadata:\n\t
+    \ name: uploader\n\t  namespace: uploader\n\tspec:\n\t  accessModes:\n\t    -
+    ReadWriteOnce\n\t  dataSource:\n\t    kind: VolumeSnapshot\n\t    apiGroup: snapshot.storage.k8s.io\n\t
+    \   name: `kubectl get replicationdestination uploader-destination --template={{.status.latestImage.name}}`\n\t
+    \ resources:\n\t    requests:\n\t      storage: `kubectl get replicationdestination
+    uploader-destination -n uploader --template={{.spec.rsync.capacity}}` \nEOF\nelse\n\techo
+    \"hi\"\nfi\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: transfer
+  namespace: uploader
