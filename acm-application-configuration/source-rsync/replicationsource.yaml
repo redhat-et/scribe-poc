@@ -3,12 +3,12 @@ apiVersion: scribe.backube/v1alpha1
 kind: ReplicationSource
 metadata:
   name: upload-source
-  namespace: uploader 
+  namespace: database 
 spec:
   sourcePVC: upload
   trigger:
     schedule: "*/2 * * * *"
   rsync:
-    sshKeys: scribe-rsync-dest-src-uploader-destination
+    sshKeys: scribe-rsync-dest-src-database-destination
     address: a99a93be499374c1aaf5d429039f7c01-7886c8bb62b2eaa2.elb.us-west-2.amazonaws.com 
     copyMethod: Snapshot

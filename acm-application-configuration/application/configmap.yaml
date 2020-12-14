@@ -1,21 +1,22 @@
 apiVersion: v1
 data:
-  transfer.sh: "if [[ $(kubectl get replicationdestination uploader-destination |
-    grep -v NAME | awk '{print $1}' > /dev/null 2>&1) = uploader-destination ]]; then\n\tcat
+  transfer.sh: "if [[ $(kubectl get replicationdestination database-destination |
+    grep -v NAME | awk '{print $1}' > /dev/null 2>&1) = database-destination ]]; then\n\tcat
     <<EOF | kubectl create -f -\n\tapiVersion: v1\n\tkind: PersistentVolumeClaim\n\tmetadata:\n\t
-    \ name: upload\n\t  namespace: uploader\n\tspec:\n\t  accessModes:\n\t    - ReadWriteOnce\n\t
-    \ dataSource:\n\t    kind: VolumeSnapshot\n\t    apiGroup: snapshot.storage.k8s.io\n\t
-    \   name: `kubectl get replicationdestination uploader-destination --template={{.status.latestImage.name}}`\n\t
-    \ resources:\n\t    requests:\n\t      storage: `kubectl get replicationdestination
-    uploader-destination -n uploader --template={{.spec.rsync.capacity}}` \nEOF\nelif
-    [[ $(kubectl get pvc upload -n uploader | grep -v NAME | awk '{print $1}' > /dev/null
-    2>&1) = upload ]]; then\n        exit 0\nelse\n\tcat <<EOF | kubectl create -f
-    -\n        apiVersion: v1\n        kind: PersistentVolumeClaim\n        metadata:\n
-    \         name: upload\n          namespace: uploader\n        spec:\n          accessModes:\n
-    \           - ReadWriteOnce\n          resources:\n            requests:\n              storage:
+    \ name: mysql-pv-claim\n\t  namespace: database\n\tspec:\n\t  accessModes:\n\t
+    \   - ReadWriteOnce\n\t  dataSource:\n\t    kind: VolumeSnapshot\n\t    apiGroup:
+    snapshot.storage.k8s.io\n\t    name: `kubectl get replicationdestination database-destination
+    --template={{.status.latestImage.name}}`\n\t  resources:\n\t    requests:\n\t
+    \     storage: `kubectl get replicationdestination database-destination -n database
+    --template={{.spec.rsync.capacity}}` \nEOF\nelif [[ $(kubectl get pvc mysql-pv-claim
+    -n database | grep -v NAME | awk '{print $1}' > /dev/null 2>&1) = mysql-pv-claim
+    ]]; then\n        exit 0\nelse\n\tcat <<EOF | kubectl create -f -\n        apiVersion:
+    v1\n        kind: PersistentVolumeClaim\n        metadata:\n          name: mysql-pv-claim\n
+    \         namespace: database\n        spec:\n          accessModes:\n            -
+    ReadWriteOnce\n          resources:\n            requests:\n              storage:
     2Gi \nEOF\nfi\n"
 kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: transfer
-  namespace: uploader
+  namespace: database

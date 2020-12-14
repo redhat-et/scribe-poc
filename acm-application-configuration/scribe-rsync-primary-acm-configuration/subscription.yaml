@@ -7,9 +7,9 @@ metadata:
     apps.open-cluster-management.io/github-path: acm-application-configuration/source-rsync
     apps.open-cluster-management.io/github-branch: main 
   name: replication-primary
-  namespace: uploader
+  namespace: database
 spec:
-  channel: uploader/file
+  channel: database/file
   placement:
     placementRef:
       kind: PlacementRule

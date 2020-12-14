@@ -4,7 +4,7 @@ metadata:
   labels:
     app: replication 
   name: failover-placement-0
-  namespace: uploader
+  namespace: database
 spec:
   clusterSelector:
     matchExpressions: []

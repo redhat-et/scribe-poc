@@ -2,11 +2,11 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   labels:
-    app: uploader
-  name: uploader-placement-0
-  namespace: uploader
+    app: database
+  name: database-placement-0
+  namespace: database
 spec:
   clusterReplicas: 1
   clusterSelector:
     matchLabels:
-      purpose: uploader
+      purpose: database

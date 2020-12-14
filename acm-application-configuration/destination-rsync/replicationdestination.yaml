@@ -2,8 +2,8 @@
 apiVersion: scribe.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: uploader-destination
-  namespace: uploader 
+  name: database-destination
+  namespace: database 
 spec:
   rsync:
     serviceType: LoadBalancer

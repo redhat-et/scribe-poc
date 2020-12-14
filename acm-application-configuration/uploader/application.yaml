@@ -3,9 +3,9 @@ kind: Application
 metadata:
   annotations:
     apps.open-cluster-management.io/deployables: ""
-    apps.open-cluster-management.io/subscriptions: uploader/uploader-subscription-0
-  name: uploader
-  namespace: uploader
+    apps.open-cluster-management.io/subscriptions: database/database-subscription-0
+  name: database
+  namespace: database
 spec:
   componentKinds:
   - group: apps.open-cluster-management.io
@@ -16,4 +16,4 @@ spec:
     - key: app
       operator: In
       values:
-      - uploader
+      - database
