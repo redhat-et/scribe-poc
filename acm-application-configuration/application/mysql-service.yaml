@@ -8,6 +8,7 @@ metadata:
     app.kubernetes.io/component: mysql
     template: mysql-persistent-template
   name: mysql
+  namespace: database
 spec:
   ports:
     - port: 3306
