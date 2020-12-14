@@ -10,5 +10,5 @@ spec:
     schedule: "*/2 * * * *"
   rsync:
     sshKeys: scribe-rsync-dest-src-database-destination
-    address: a99a93be499374c1aaf5d429039f7c01-7886c8bb62b2eaa2.elb.us-west-2.amazonaws.com 
+    address: aaa5c3958bbfe48fe964d4bc2829235c-de78ec92d2ae2077.elb.us-west-2.amazonaws.com
     copyMethod: Snapshot
