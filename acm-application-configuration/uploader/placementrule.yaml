@@ -6,8 +6,7 @@ metadata:
   name: uploader-placement-0
   namespace: uploader
 spec:
+  clusterReplicas: 1
   clusterSelector:
-    matchExpressions: []
     matchLabels:
       purpose: uploader
-  clusterReplicas: 1
