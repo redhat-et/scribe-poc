@@ -2,10 +2,10 @@
 apiVersion: scribe.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: upload-source
+  name: database-source 
   namespace: database 
 spec:
-  sourcePVC: upload
+  sourcePVC: mysql-pv-claim
   trigger:
     schedule: "*/2 * * * *"
   rsync:
