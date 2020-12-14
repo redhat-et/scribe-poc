@@ -1,22 +1,18 @@
 apiVersion: v1
 data:
-  transfer.sh: "if [[ $(kubectl get replicationdestination database-destination |
-    grep -v NAME | awk '{print $1}' > /dev/null 2>&1) = database-destination ]]; then\n\tcat
-    <<EOF | kubectl create -f -\n\tapiVersion: v1\n\tkind: PersistentVolumeClaim\n\tmetadata:\n\t
-    \ name: mysql-pv-claim\n\t  namespace: database\n\tspec:\n\t  accessModes:\n\t
-    \   - ReadWriteOnce\n\t  dataSource:\n\t    kind: VolumeSnapshot\n\t    apiGroup:
-    snapshot.storage.k8s.io\n\t    name: `kubectl get replicationdestination database-destination
-    --template={{.status.latestImage.name}}`\n\t  resources:\n\t    requests:\n\t
-    \     storage: `kubectl get replicationdestination database-destination -n database
-    --template={{.spec.rsync.capacity}}` \nEOF\nelif [[ $(kubectl get pvc mysql-pv-claim
-    -n database | grep -v NAME | awk '{print $1}' > /dev/null 2>&1) = mysql-pv-claim
-    ]]; then\n        exit 0\nelse\n\tcat <<EOF | kubectl create -f -\n        apiVersion:
-    v1\n        kind: PersistentVolumeClaim\n        metadata:\n          name: mysql-pv-claim\n
-    \         namespace: database\n        spec:\n          accessModes:\n            -
-    ReadWriteOnce\n          resources:\n            requests:\n              storage:
-    2Gi \nEOF\nfi\n"
+  transfer.sh: "#!/bin/bash\nif [[ $(kubectl get pvc mysql-pv-claim) ]]; then\n    exit
+    0\nelif [[ $(kubectl get replicationdestination database-destination | grep -v
+    NAME | awk '{print $1}') == \"database-destination\" ]]; then\n\tcat <<EOF | kubectl
+    create -f -\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: mysql-pv-claim\n
+    \ namespace: database\nspec:\n  accessModes:\n    - ReadWriteOnce\n  dataSource:\n
+    \   kind: VolumeSnapshot\n    apiGroup: snapshot.storage.k8s.io\n    name: `kubectl
+    get replicationdestination database-destination --template={{.status.latestImage.name}}`\n
+    \ resources:\n    requests:\n      storage: `kubectl get replicationdestination
+    database-destination -n database --template={{.spec.rsync.capacity}}` \nEOF\nelse\ncat
+    <<EOF | kubectl create -f -\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n
+    \ name: mysql-pv-claim\n  namespace: database\nspec:\n  accessModes:\n    - ReadWriteOnce\n
+    \ resources:\n    requests:\n      storage: 2Gi \nEOF\nfi"
 kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: transfer
-  namespace: database
