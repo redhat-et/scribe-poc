@@ -7,10 +7,11 @@ data:
     ReadWriteOnce\n\t  dataSource:\n\t    kind: VolumeSnapshot\n\t    apiGroup: snapshot.storage.k8s.io\n\t
     \   name: `kubectl get replicationdestination uploader-destination --template={{.status.latestImage.name}}`\n\t
     \ resources:\n\t    requests:\n\t      storage: `kubectl get replicationdestination
-    uploader-destination -n uploader --template={{.spec.rsync.capacity}}` \nEOF\nelse\n\techo
-    \"hi\"\nfi\n"
+    uploader-destination -n uploader --template={{.spec.rsync.capacity}}` \nEOF\nelse\n
+    \       cat <<EOF | kubectl create -f -\n\tapiVersion: v1\n\tkind: PersistentVolumeClaim\n\tmetadata:\n\t
+    \ name: upload\n\t  namespace: uploader\n\tspec:\n\t  accessModes:\n\t  - ReadWriteOnce\n\t
+    \ resources:\n\t    requests:\n\t      storage: 2Gi\nEOF\nfi\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: transfer
   namespace: uploader
