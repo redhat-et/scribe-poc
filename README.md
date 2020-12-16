@@ -1,4 +1,4 @@
 # scribe-poc
-This repository contains demonstration materials for scribe.
+This repository contains demonstration materials to demonstrate scribe.
 
-It is advised to use either sealed secrets or a private repository with this work as it contains an SSH private key.
+It is advised to use either sealed secrets or a private repository with this work as will need to contain SSH keys.
