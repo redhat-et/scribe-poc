@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  transfer.sh: "#!/bin/bash\nif [[ $(kubectl get pvc mysql-pv-claim) ]]; then\n    exit
+    0\nelif [[ $(kubectl get replicationdestination database-destination | grep -v
+    NAME | awk '{print $1}') == \"database-destination\" ]]; then\n\tcat <<EOF | kubectl
+    create -f -\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: mysql-pv-claim\n
+    \ namespace: pricelist\nspec:\n  accessModes:\n    - ReadWriteOnce\n  dataSource:\n
+    \   kind: VolumeSnapshot\n    apiGroup: snapshot.storage.k8s.io\n    name: `kubectl
+    get replicationdestination database-destination --template={{.status.latestImage.name}}`\n
+    \ resources:\n    requests:\n      storage: `kubectl get replicationdestination
+    database-destination -n pricelist --template={{.spec.rsync.capacity}}` \nEOF\nelse\ncat
+    <<EOF | kubectl create -f -\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n
+    \ name: mysql-pv-claim\n  namespace: pricelist\nspec:\n  accessModes:\n    - ReadWriteOnce\n
+    \ resources:\n    requests:\n      storage: 2Gi \nEOF\nfi"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: transfer
+  namespace: pricelist
