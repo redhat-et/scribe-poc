@@ -8,5 +8,7 @@ spec:
   rsync:
     serviceType: LoadBalancer
     copyMethod: Snapshot 
+    storageClassName: gp2-csi
+    volumeSnapshotClassName: gp2-csi
     capacity: 2Gi
     accessModes: [ReadWriteOnce]
