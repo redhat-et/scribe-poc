@@ -7,6 +7,8 @@ metadata:
     tier: database
   name: mysql
   namespace: pricelist
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   replicas: 1
   selector:
@@ -22,16 +24,14 @@ spec:
         tier: database
     spec:
       containers:
-      - image: mysql
-        name: mysql 
+      - image: registry.access.redhat.com/rhscl/mysql-56-rhel7:latest
+        name: mysql
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: pricelist
         - name: MYSQL_DATABASE
           value: pricelist
-        - name: MYSQL_USER
-          value: pricelist
         - name: MYSQL_PASSWORD
+          value: pricelist
+        - name: MYSQL_USER
           value: pricelist
         resources:
           requests:
@@ -41,7 +41,7 @@ spec:
             memory: "1Gi"
             cpu: "1"
         volumeMounts:
-        - mountPath: /var/lib/mysql
+        - mountPath: /var/lib/mysql/data
           name: mysql-db
       volumes:
       - name: mysql-db
