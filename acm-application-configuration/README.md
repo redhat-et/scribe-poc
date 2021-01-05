@@ -48,7 +48,7 @@ the kubeconfig of the failover cluster.
 
 ```
 export KUBECONFIG=/tmp/failover
-oc get replicationdestination database-destination -n dest --template={{.status.rsync.address}}
+oc get replicationdestination database-destination -n database --template={{.status.rsync.address}}
 ac96b981383304b519defbd5ad89d750-a4fc2845d395b0d4.elb.us-east-1.amazonaws.com
 ```
 
