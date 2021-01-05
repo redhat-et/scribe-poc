@@ -10,6 +10,6 @@ spec:
     schedule: "*/2 * * * *"
   rsync:
     sshKeys: scribe-rsync-dest-src-database-destination
-    address: a9f332987532d411c9548a2fa03333dd-e7eaccf120d00a4a.elb.us-east-2.amazonaws.com
+    address: acf23ec7a9ba34da98ebdd654c0941c3-d2ff990cc66603b0.elb.us-east-2.amazonaws.com
     copyMethod: Snapshot
     volumeSnapshotClassName: ocs-storagecluster-rbdplugin-snapclass
