@@ -23,13 +23,15 @@ spec:
     spec:
       containers:
       - image: mysql
-        name: mysql
+        name: mysql 
         env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: pricelist
         - name: MYSQL_DATABASE
           value: pricelist
-        - name: MYSQL_PASSWORD
-          value: pricelist
         - name: MYSQL_USER
+          value: pricelist
+        - name: MYSQL_PASSWORD
           value: pricelist
         resources:
           requests:
@@ -39,7 +41,7 @@ spec:
             memory: "1Gi"
             cpu: "1"
         volumeMounts:
-        - mountPath: /var/lib/mysql/data
+        - mountPath: /var/lib/mysql
           name: mysql-db
       volumes:
       - name: mysql-db
