@@ -8,8 +8,6 @@ metadata:
     argocd.argoproj.io/sync-wave: "7"
 spec:
   template:
-    metadata:
-      creationTimestamp: null
     spec:
       containers:
       - command:
