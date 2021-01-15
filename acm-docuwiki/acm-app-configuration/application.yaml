@@ -1,0 +1,19 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  annotations:
+    apps.open-cluster-management.io/deployables: ""
+    apps.open-cluster-management.io/subscriptions: database/database-subscription-0
+  name: database
+  namespace: dokuwiki
+spec:
+  componentKinds:
+  - group: apps.open-cluster-management.io
+    kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - database
