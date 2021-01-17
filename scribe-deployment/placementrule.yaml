@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  labels:
+    app: scribe
+  name: scribe-placement-0
+  namespace: scribe-system
+spec:
+  clusterSelector:
+    matchExpressions: []
+    matchLabels:
+      vendor: OpenShift

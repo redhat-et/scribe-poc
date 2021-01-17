@@ -1,0 +1,16 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  labels:
+    app: scribe
+  annotations:
+    apps.open-cluster-management.io/github-path: scribe-components
+    apps.open-cluster-management.io/github-branch: main 
+  name: scribe
+  namespace: scribe-system
+spec:
+  channel: database/file
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: scribe-placement-0
