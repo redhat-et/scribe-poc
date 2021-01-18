@@ -3,8 +3,8 @@ kind: Application
 metadata:
   annotations:
     apps.open-cluster-management.io/deployables: ""
-    apps.open-cluster-management.io/subscriptions: database/database-subscription-0
-  name: database
+    apps.open-cluster-management.io/subscriptions: dokuwiki/dokuwiki-subscription-0
+  name: dokuwiki 
   namespace: dokuwiki
 spec:
   componentKinds:
@@ -16,4 +16,4 @@ spec:
     - key: app
       operator: In
       values:
-      - database
+      - dokuwiki

@@ -9,7 +9,7 @@ metadata:
   name: scribe
   namespace: scribe-system
 spec:
-  channel: database/file
+  channel: scribe-system/file
   placement:
     placementRef:
       kind: PlacementRule

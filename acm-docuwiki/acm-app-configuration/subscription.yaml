@@ -3,14 +3,14 @@ kind: Subscription
 metadata:
   annotations:
     apps.open-cluster-management.io/git-branch: main
-    apps.open-cluster-management.io/git-path: acm-application-configuration/application
+    apps.open-cluster-management.io/git-path: acm-docuwiki/application
   labels:
-    app: database
-  name: database-subscription-0
+    app: dokuwiki
+  name: dokuwiki-subscription-0
   namespace: dokuwiki
 spec:
-  channel: database/file
+  channel: dokuwiki/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: database-placement-0
+      name: dokuwiki-placement-0
