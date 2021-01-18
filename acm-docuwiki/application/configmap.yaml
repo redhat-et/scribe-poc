@@ -10,7 +10,7 @@ data:
     \   kind: VolumeSnapshot\n\t    apiGroup: snapshot.storage.k8s.io\n\t    name:
     `kubectl get replicationdestination $DESTINATION --template={{.status.latestImage.name}}`\n\t
     \ resources:\n\t    requests:\n\t      storage: `kubectl get replicationdestination
-    $DESTINATION -n database --template={{.spec.rsync.capacity}}` \nEOF\nelse\n\tcat
+    $DESTINATION --template={{.spec.rsync.capacity}}` \nEOF\nelse\n\tcat
     <<EOF | kubectl create -f - \n        apiVersion: v1\n        kind: PersistentVolumeClaim\n
     \       metadata:\n          name: $PVC_NAME\n        spec:\n          accessModes:\n
     \         - ReadWriteOnce\n          resources:\n           requests:\n             storage:
