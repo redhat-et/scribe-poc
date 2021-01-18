@@ -4,12 +4,12 @@ metadata:
   labels:
     app: replication 
   annotations:
-    apps.open-cluster-management.io/github-path: acm-application-configuration/source-rsync
+    apps.open-cluster-management.io/github-path: acm-docuwiki/source-rsync
     apps.open-cluster-management.io/github-branch: main 
   name: replication-primary
   namespace: dokuwiki
 spec:
-  channel: database/file
+  channel: dokuwiki/file
   placement:
     placementRef:
       kind: PlacementRule
