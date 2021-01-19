@@ -5,6 +5,7 @@ metadata:
   name: database-destination
   namespace: dokuwiki 
 spec:
+  rclone:
     rcloneConfigSection: "aws-s3-bucket"
     direction: "destination"
     mountPath: "/data"
