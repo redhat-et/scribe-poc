@@ -1,0 +1,15 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: database-destination
+  namespace: dokuwiki 
+spec:
+    rcloneConfigSection: "aws-s3-bucket"
+    direction: "destination"
+    mountPath: "/data"
+    rcloneDestPath: "east2-backup-rcook"
+    rcloneConfig: "/rclone-config/rclone.conf"
+    copyMethod: Snapshot
+    accessModes: [ReadWriteMany]
+    capacity: 8Gi
