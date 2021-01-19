@@ -12,6 +12,6 @@ spec:
     rcloneConfigSection: "aws-s3-bucket"
     direction: "source"
     mountPath: "/data"
-    rcloneDestPath: "east2-backup-rcook"
+    rcloneDestPath: "rcook-backup"
     rcloneConfig: "/rclone-config/rclone.conf"
     copyMethod: Snapshot
