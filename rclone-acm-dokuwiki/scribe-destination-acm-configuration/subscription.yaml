@@ -4,9 +4,9 @@ metadata:
   labels:
     app: replication 
   annotations:
-    apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/source-rsync
+    apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/destination-rclone
     apps.open-cluster-management.io/github-branch: main 
-  name: replication-primary
+  name: replication-remote
   namespace: dokuwiki
 spec:
   channel: dokuwiki/file

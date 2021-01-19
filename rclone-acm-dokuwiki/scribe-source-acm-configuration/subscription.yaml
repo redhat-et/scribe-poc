@@ -4,13 +4,13 @@ metadata:
   labels:
     app: replication 
   annotations:
-    apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/destination-rsync
+    apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/source-rclone
     apps.open-cluster-management.io/github-branch: main 
-  name: replication-failover
+  name: replication-source
   namespace: dokuwiki
 spec:
   channel: dokuwiki/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: source-placement-0
+      name: datasource-placement-0

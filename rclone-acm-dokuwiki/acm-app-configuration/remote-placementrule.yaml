@@ -2,11 +2,13 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   labels:
-    app: replication 
-  name: datasource-placement-0
+    app: dokuwiki
+  name: remote-placement-0
   namespace: dokuwiki
 spec:
+  clusterConditions:
+    - type: ManagedClusterConditionAvailable
+      status: "True"
   clusterSelector:
-    matchExpressions: []
     matchLabels:
-      site: headquarters 
+      site: remote

@@ -3,7 +3,7 @@ kind: PlacementRule
 metadata:
   labels:
     app: dokuwiki
-  name: dokuwiki-placement-0
+  name: appsource-placement-0
   namespace: dokuwiki
 spec:
   clusterConditions:
@@ -11,4 +11,4 @@ spec:
       status: "True"
   clusterSelector:
     matchLabels:
-      purpose: dokuwiki
+      site: headquarters

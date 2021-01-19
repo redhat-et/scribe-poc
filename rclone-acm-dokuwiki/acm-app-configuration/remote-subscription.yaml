@@ -3,14 +3,14 @@ kind: Subscription
 metadata:
   annotations:
     apps.open-cluster-management.io/git-branch: main
-    apps.open-cluster-management.io/git-path: rclone-acm-dokuwiki/application 
+    apps.open-cluster-management.io/git-path: rclone-acm-dokuwiki/remote-application
   labels:
     app: dokuwiki
-  name: appsource-subscription-0
+  name: dokuwiki-subscription-0
   namespace: dokuwiki
 spec:
   channel: dokuwiki/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: appsource-placement-0
+      name: remote-placement-0
