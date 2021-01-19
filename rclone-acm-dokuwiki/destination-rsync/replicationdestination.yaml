@@ -1,0 +1,14 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: database-destination
+  namespace: dokuwiki 
+spec:
+  rsync:
+    serviceType: LoadBalancer
+    copyMethod: Snapshot 
+    storageClassName: gp2-csi
+    volumeSnapshotClassName: gp2-csi
+    capacity: 2Gi
+    accessModes: [ReadWriteOnce]
