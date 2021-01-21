@@ -4,14 +4,14 @@ metadata:
   labels:
     app: storageclass
   annotations:
-    apps.open-cluster-management.io/github-path: storage-class-modifications/osp
+    apps.open-cluster-management.io/github-path: storage-class-modifications/hostpath
     apps.open-cluster-management.io/github-branch: main
     apps.open-cluster-management.io/reconcile-option: merge
-  name: osp-storageclass
+  name: hostpath-storageclass
   namespace: default
 spec:
   channel: default/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: osp-placement-0
+      name: hostpath-placement-0

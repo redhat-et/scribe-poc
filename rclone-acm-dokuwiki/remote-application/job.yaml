@@ -15,8 +15,6 @@ spec:
           value: database-destination
         - name: PVC_NAME
           value: dokuwiki 
-        - name: SIZE
-          value: 8Gi
         volumeMounts:
         - name: transfer-volume
           mountPath: /mover
