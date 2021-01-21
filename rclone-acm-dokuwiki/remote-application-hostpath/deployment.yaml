@@ -103,6 +103,7 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
+      securityContext: {}
       volumes:
       - name: dokuwiki-data
         persistentVolumeClaim:
