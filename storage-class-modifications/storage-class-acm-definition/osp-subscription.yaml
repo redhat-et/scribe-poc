@@ -4,7 +4,7 @@ metadata:
   labels:
     app: storageclass
   annotations:
-    apps.open-cluster-management.io/github-path: storage-class-modifications/aws
+    apps.open-cluster-management.io/github-path: storage-class-modifications/osp
     apps.open-cluster-management.io/github-branch: main
     apps.open-cluster-management.io/reconcile-option: merge
   name: aws-storageclass
