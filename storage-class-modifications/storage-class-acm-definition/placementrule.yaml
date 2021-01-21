@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  labels:
+    app: storageclass
+  name: aws-placement-0
+  namespace: default
+spec:
+  clusterSelector:
+    matchExpressions: []
+    matchLabels:
+      storage: aws

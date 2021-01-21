@@ -1,0 +1,16 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  labels:
+    app: storageclass
+  annotations:
+    apps.open-cluster-management.io/github-path: storage-class-modifications/aws
+    apps.open-cluster-management.io/github-branch: main 
+  name: aws-storageclass
+  namespace: default
+spec:
+  channel: default/file
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: storage-placement-0
