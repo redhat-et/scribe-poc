@@ -6,11 +6,11 @@ metadata:
   annotations:
     apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/destination-rclone
     apps.open-cluster-management.io/github-branch: main 
-  name: replication-remote
+  name: app-replication-remote
   namespace: dokuwiki
 spec:
   channel: dokuwiki/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: remote-placement-0
+      name: app-remote-placement-0

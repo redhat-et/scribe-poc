@@ -7,11 +7,9 @@ metadata:
 spec:
   sourcePVC: dokuwiki
   trigger:
-    schedule: "*/2 * * * *"
+    schedule: "*/15 * * * *"
   rclone:
     rcloneConfigSection: "aws-s3-bucket"
-    direction: "source"
-    mountPath: "/data"
     rcloneDestPath: "rcook-backup"
-    rcloneConfig: "/rclone-config/rclone.conf"
+    rcloneConfig: "rclone-secret"
     copyMethod: Snapshot

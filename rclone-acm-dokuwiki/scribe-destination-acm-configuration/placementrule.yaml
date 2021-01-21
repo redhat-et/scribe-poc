@@ -3,7 +3,7 @@ kind: PlacementRule
 metadata:
   labels:
     app: replication 
-  name: remote-placement-0
+  name: app-remote-placement-0
   namespace: dokuwiki
 spec:
   clusterSelector:
