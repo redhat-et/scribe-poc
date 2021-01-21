@@ -104,6 +104,7 @@ spec:
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
       securityContext: {}
+      serviceAccount: persist
       volumes:
       - name: dokuwiki-data
         persistentVolumeClaim:
