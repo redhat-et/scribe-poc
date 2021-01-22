@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: chown-binding 
+  namespace: dokuwiki
+subjects:
+- kind: ServiceAccount
+  name: chown 
+roleRef:
+  kind: Role
+  name: chown-changer
+  apiGroup: rbac.authorization.k8s.io
