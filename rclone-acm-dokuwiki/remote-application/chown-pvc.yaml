@@ -6,6 +6,7 @@ rules:
 - apiGroups:
   - "" 
   resources:
-  - namespaces
+  - projects
+  - project.openshift.io
   verbs:
   - get
