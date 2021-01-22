@@ -39,6 +39,13 @@ spec:
                   app.kubernetes.io/name: dokuwiki
               topologyKey: kubernetes.io/hostname
             weight: 1
+      initContainers:
+      - name: change-ownership
+        image: registry.redhat.io/openshift4/ose-cli:latest
+        command: ["/bin/bash","chown `kubectl get project dokuwiki -o jsonpath='{.metadata.annotations.openshift\.io/sa\.scc\.uid-range}' | awk -F'/' '{print $1}'` -R /bitnami/dokuwiki"]
+        volumeMounts:
+        - mountPath: /bitnami/dokuwiki
+          name: dokuwiki-data
       containers:
       - env:
         - name: DOKUWIKI_USERNAME
