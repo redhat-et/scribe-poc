@@ -6,6 +6,6 @@ rules:
 - apiGroups:
   - "" 
   resources:
-  - projects
+  - namespaces
   verbs:
   - get
