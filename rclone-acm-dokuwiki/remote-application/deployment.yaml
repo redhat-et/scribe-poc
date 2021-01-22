@@ -40,14 +40,9 @@ spec:
               topologyKey: kubernetes.io/hostname
             weight: 1
       initContainers:
-      - name: change-ownership
+      - name: sleep 
         image: registry.redhat.io/openshift4/ose-cli:latest
-        command: ["/bin/bash","-c","chown `kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'`:`kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'` -R /bitnami/dokuwiki"]
-        securityContext:
-        volumeMounts:
-        - mountPath: /bitnami/dokuwiki
-          name: dokuwiki-data
-        serviceAcccount: chown
+        command: ["/bin/bash","-c","sleep 2m"]
       containers:
       - env:
         - name: DOKUWIKI_USERNAME
