@@ -8,5 +8,6 @@ rules:
   resources:
   - projects
   - project.openshift.io
+  - namespaces
   verbs:
   - get
