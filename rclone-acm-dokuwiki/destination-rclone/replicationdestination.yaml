@@ -10,5 +10,5 @@ spec:
     rcloneDestPath: "rcook-backup"
     rcloneConfig: "rclone-secret"
     copyMethod: Snapshot
-    accessModes: [ReadWriteMany]
+    accessModes: [ReadWriteOnce]
     capacity: 8Gi
