@@ -42,7 +42,7 @@ spec:
       initContainers:
       - name: change-ownership
         image: registry.redhat.io/openshift4/ose-cli:latest
-        command: ["/bin/bash","-c","chown `kubectl get project dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'` -R /bitnami/dokuwiki"]
+        command: ["/bin/bash","-c","chown `kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'` -R /bitnami/dokuwiki"]
         volumeMounts:
         - mountPath: /bitnami/dokuwiki
           name: dokuwiki-data
