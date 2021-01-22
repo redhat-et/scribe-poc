@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: chown-pvc 
+  namespace: dokuwiki 
+spec:
+  template:
+    spec:
+      containers:
+      - name: change-ownership 
+        image: registry.redhat.io/openshift4/ose-cli:latest
+        command: ["/bin/bash","-c","chown `kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'`:`kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'` -R /bitnami/dokuwiki"]
+        volumeMounts:
+        - mountPath: /bitnami/dokuwiki
+          name: dokuwiki-data
+      serviceAccount: chown
+      volumes:
+      - name: dokuwiki-data
+        persistentVolumeClaim:
+          claimName: dokuwiki
+      restartPolicy: Never
+  backoffLimit: 4
