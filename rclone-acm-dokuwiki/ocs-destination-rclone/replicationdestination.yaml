@@ -13,4 +13,4 @@ spec:
     copyMethod: Snapshot
     accessModes: [ReadWriteOnce]
     capacity: 8Gi
-    volumeSnapshotClassName: ocs-storagecluster-rbdplugin-snapclass
+    volumeSnapshotClassName: ocs-storagecluster-cephfsplugin-snapclass
