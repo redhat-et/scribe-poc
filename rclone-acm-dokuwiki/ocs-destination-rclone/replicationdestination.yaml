@@ -1,0 +1,15 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: database-destination
+  namespace: dokuwiki 
+spec:
+  rclone:
+    rcloneConfigSection: "aws-s3-bucket"
+    rcloneDestPath: "rcook-backup"
+    rcloneConfig: "rclone-secret"
+    copyMethod: Snapshot
+    accessModes: [ReadWriteOnce]
+    capacity: 8Gi
+    volumeSnapshotClassName: ocs-storagecluster-rbdplugin-snapclass
