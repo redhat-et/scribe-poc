@@ -5,6 +5,7 @@ metadata:
   name: database-destination
   namespace: dokuwiki 
 spec:
+  paused: true
   rclone:
     rcloneConfigSection: "aws-s3-bucket"
     rcloneDestPath: "rcook-backup"
