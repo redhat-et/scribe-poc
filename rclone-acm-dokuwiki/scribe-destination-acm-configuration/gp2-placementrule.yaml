@@ -3,10 +3,10 @@ kind: PlacementRule
 metadata:
   labels:
     app: replication 
-  name: app-remote-placement-0
+  name: gp2-app-remote-placement-0
   namespace: dokuwiki
 spec:
   clusterSelector:
     matchExpressions: []
     matchLabels:
-      site: remote 
+      storage: gp2

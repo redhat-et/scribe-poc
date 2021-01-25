@@ -3,10 +3,10 @@ kind: PlacementRule
 metadata:
   labels:
     app: replication 
-  name: ocs-remote-placement-0
+  name: osp-app-remote-placement-0
   namespace: dokuwiki
 spec:
   clusterSelector:
     matchExpressions: []
     matchLabels:
-      storage: ocs
+      storage: osp

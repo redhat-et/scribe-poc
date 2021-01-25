@@ -42,7 +42,7 @@ spec:
       initContainers:
       - name: sleep 
         image: registry.redhat.io/openshift4/ose-cli:latest
-        command: ["/bin/bash","-c","sleep 2m"]
+        command: ["/bin/bash","-c","sleep 30s"]
       containers:
       - env:
         - name: DOKUWIKI_USERNAME

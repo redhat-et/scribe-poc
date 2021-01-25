@@ -9,4 +9,4 @@ spec:
   clusterSelector:
     matchExpressions: []
     matchLabels:
-      storage: aws
+      storage: gp2

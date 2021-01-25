@@ -24,4 +24,4 @@ spec:
           configMap:
             name: transfer
       restartPolicy: Never
-  backoffLimit: 4
+  backoffLimit: 40

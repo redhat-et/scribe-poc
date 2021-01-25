@@ -4,13 +4,13 @@ metadata:
   labels:
     app: replication 
   annotations:
-    apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/ocs-destination-rclone
+    apps.open-cluster-management.io/github-path: rclone-acm-dokuwiki/rclone-deployment/destination-rclone/overlays/gp2 
     apps.open-cluster-management.io/github-branch: main 
-  name: ocs-replication-remote
+  name: gp2-app-replication-remote
   namespace: dokuwiki
 spec:
   channel: dokuwiki/file
   placement:
     placementRef:
       kind: PlacementRule
-      name: ocs-remote-placement-0
+      name: gp2-app-remote-placement-0
