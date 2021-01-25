@@ -20,6 +20,6 @@ spec:
       volumes:
       - name: dokuwiki-data
         persistentVolumeClaim:
-          claimName: dokuwiki
+          claimName: dokuwiki1
       restartPolicy: Never
   backoffLimit: 4

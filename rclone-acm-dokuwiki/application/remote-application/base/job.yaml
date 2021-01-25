@@ -14,7 +14,7 @@ spec:
         - name: DESTINATION
           value: database-destination
         - name: PVC_NAME
-          value: dokuwiki 
+          value: dokuwiki1 
         volumeMounts:
         - name: transfer-volume
           mountPath: /mover
