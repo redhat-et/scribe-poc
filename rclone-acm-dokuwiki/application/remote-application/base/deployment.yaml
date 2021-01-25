@@ -60,6 +60,8 @@ spec:
           value: My Wiki
         image: docker.io/bitnami/dokuwiki:20200729.0.0-debian-10-r121
         imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 1002230000
         livenessProbe:
           failureThreshold: 6
           httpGet:
