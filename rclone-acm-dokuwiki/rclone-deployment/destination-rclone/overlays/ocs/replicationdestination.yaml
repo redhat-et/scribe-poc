@@ -6,10 +6,4 @@ metadata:
   namespace: dokuwiki 
 spec:
   rclone:
-    rcloneConfigSection: "aws-s3-bucket"
-    rcloneDestPath: "rcook-backup"
-    rcloneConfig: "rclone-secret"
-    copyMethod: Snapshot
-    accessModes: [ReadWriteOnce]
-    capacity: 8Gi
     volumeSnapshotClassName: ocs-storagecluster-cephfsplugin-snapclass

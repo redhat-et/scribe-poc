@@ -12,3 +12,4 @@ spec:
     copyMethod: Snapshot
     accessModes: [ReadWriteOnce]
     capacity: 8Gi
+    volumeSnapshotClassName: gp2-csi

@@ -1,0 +1,3 @@
+resources:
+- rclone.yaml
+- replicationdestination.yaml
