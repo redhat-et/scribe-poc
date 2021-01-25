@@ -11,7 +11,7 @@ spec:
         image: registry.redhat.io/openshift4/ose-cli:latest
         securityContext:
           runAsUser: 0
-        command: ["/bin/bash","-c","chown `kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'`:`kubectl get namespace dokuwiki -o jsonpath='{.metadata.annotations.openshift\\.io/sa\\.scc\\.uid-range}' | awk -F'/' '{print $1}'` -R /bitnami/dokuwiki"]
+        command: ["/bin/bash","-c","chown 1002230000:1002230000 -R /bitnami/dokuwiki"]
         volumeMounts:
         - mountPath: /bitnami/dokuwiki
           name: dokuwiki-data
