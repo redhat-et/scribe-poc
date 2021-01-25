@@ -14,6 +14,7 @@ spec:
         - mountPath: /bitnami/dokuwiki
           name: dokuwiki-data
       serviceAccount: chown
+      privileged: true
       volumes:
       - name: dokuwiki-data
         persistentVolumeClaim:
