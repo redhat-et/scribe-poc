@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: $PVC_NAME
+  name: dokuwiki
+  namespace: dokuwiki
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: $SIZE
+      storage: 8Gi
