@@ -1,0 +1,18 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  labels:
+    app: storageclass
+  annotations:
+    apps.open-cluster-management.io/github-path: storage-class-modifications/ocs
+    apps.open-cluster-management.io/github-branch: main
+    apps.open-cluster-management.io/reconcile-option: replace
+  name: ocs-storageclass
+  namespace: default
+spec:
+  channel: default/file
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: ocs-placement-0
+

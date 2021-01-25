@@ -1,0 +1,16 @@
+resources:
+- change-ownership-binding.yaml
+- change-ownership-serviceaccount.yaml
+- chown-job.yaml
+- chown-pvc.yaml
+- configmap.yaml
+- deployment.yaml
+- extrascc.yaml
+- job.yaml
+- namespace.yaml
+- route.yaml
+- secret.yaml
+- service.yaml
+- snapshot-binding.yaml
+- snapshot-serviceaccount.yaml
+- snapshot-to-pvc.yaml

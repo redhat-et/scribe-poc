@@ -1,0 +1,7 @@
+bases:
+- ../../base
+patchesStrategicMerge:
+- deployment.yaml 
+resources:
+- persistent-sa.yaml
+- persist-perms.yaml
