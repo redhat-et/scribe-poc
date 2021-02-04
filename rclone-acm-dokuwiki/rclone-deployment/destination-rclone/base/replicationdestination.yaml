@@ -10,7 +10,6 @@ spec:
     rcloneConfigSection: "aws-s3-bucket"
     rcloneDestPath: "rcook-backup"
     rcloneConfig: "rclone-secret"
-    copyMethod: Snapshot
+    copyMethod: None 
     accessModes: [ReadWriteOnce]
     capacity: 8Gi
-    volumeSnapshotClassName: gp2-csi
