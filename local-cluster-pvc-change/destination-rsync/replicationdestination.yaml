@@ -1,0 +1,13 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: database-destination
+  namespace: dokuwiki 
+spec:
+  rsync:
+    serviceType: ClusterIP
+    copyMethod: None
+    capacity: 8Gi
+    accessModes: [ReadWriteOnce]
+    destinationPVC: dokuwiki-ocs

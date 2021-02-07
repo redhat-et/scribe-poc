@@ -1,0 +1,14 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: database-source 
+  namespace: dokuwiki 
+spec:
+  sourcePVC: dokuwiki 
+  trigger:
+    schedule: "*/8 * * * *"
+  rsync:
+    sshKeys: scribe-rsync-dest-src-database-destination
+    address: 172.30.159.23
+    copyMethod: None 

@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: my-release
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/name: dokuwiki
+  name: my-release-dokuwiki
+  namespace: dokuwiki
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: my-release
+      app.kubernetes.io/name: dokuwiki
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "9117"
+        prometheus.io/scrape: "true"
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: my-release
+        app.kubernetes.io/name: dokuwiki
+        helm.sh/chart: dokuwiki-11.0.0
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: my-release
+                  app.kubernetes.io/name: dokuwiki
+              topologyKey: kubernetes.io/hostname
+            weight: 1
+      containers:
+      - env:
+        - name: DOKUWIKI_USERNAME
+          value: user
+        - name: DOKUWIKI_FULL_NAME
+          value: User Name
+        - name: DOKUWIKI_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: dokuwiki-password
+              name: my-release-dokuwiki
+        - name: DOKUWIKI_EMAIL
+          value: user@example.com
+        - name: DOKUWIKI_WIKI_NAME
+          value: My Wiki
+        image: docker.io/bitnami/dokuwiki:20200729.0.0-debian-10-r121
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /doku.php
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: dokuwiki
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 8443
+          name: https
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /doku.php
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 300m
+            memory: 512Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /bitnami/dokuwiki
+          name: dokuwiki-data
+      dnsPolicy: ClusterFirst
+      hostAliases:
+      - hostnames:
+        - status.localhost
+        ip: 127.0.0.1
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: dokuwiki-data
+        persistentVolumeClaim:
+          claimName: dokuwiki
