@@ -13,4 +13,4 @@ spec:
     rcloneDestPath: "rcook-backup"
     rcloneConfig: "rclone-secret"
     copyMethod: Snapshot
-    volumeSnapshotClassName: ocs-storagecluster-rbdplugin-snapclass
+    volumeSnapshotClassName: gp2-csi 
