@@ -1,8 +1,4 @@
 resources:
-- change-ownership-binding.yaml
-- change-ownership-serviceaccount.yaml
-- chown-job.yaml
-- chown-pvc.yaml
 - configmap.yaml
 - deployment.yaml
 - extrascc.yaml
