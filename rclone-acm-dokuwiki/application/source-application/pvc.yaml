@@ -4,6 +4,7 @@ metadata:
   name: dokuwiki
   namespace: dokuwiki
 spec:
+  storageClassName: gp2-csi
   accessModes:
     - ReadWriteOnce
   resources:
