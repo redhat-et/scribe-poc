@@ -5,5 +5,7 @@ metadata:
   name: database-destination
   namespace: dokuwiki 
 spec:
+  trigger:
+    schedule: "*/5 * * * *"
   rclone:
     volumeSnapshotClassName: gp2-csi
