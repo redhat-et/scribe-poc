@@ -1,10 +1,8 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
 metadata:
-  name: file 
-  namespace: scribe-system
+  name: scribe 
+  namespace: scribe-system 
 spec:
-  type: GitHub
-  pathname: https://github.com/redhat-et/scribe-poc.git
-  secretRef:
-    name: github-gitops-clusters
+  pathname: https://backube.github.io/helm-charts/
+  type: HelmRepo
