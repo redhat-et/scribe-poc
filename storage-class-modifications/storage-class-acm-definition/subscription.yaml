@@ -6,7 +6,7 @@ metadata:
   annotations:
     apps.open-cluster-management.io/github-path: storage-class-modifications/aws
     apps.open-cluster-management.io/github-branch: main
-    apps.open-cluster-management.io/reconcile-option: replace
+    apps.open-cluster-management.io/reconcile-option: replace 
   name: aws-storageclass
   namespace: default
 spec:
