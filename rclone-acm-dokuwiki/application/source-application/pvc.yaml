@@ -4,7 +4,7 @@ metadata:
   name: dokuwiki
   namespace: dokuwiki
 spec:
-  storageClassName: gp2-csi
+  storageClassName: ocs-storagecluster-ceph-rbd
   accessModes:
     - ReadWriteOnce
   resources:
