@@ -69,3 +69,7 @@ kubectl create secret generic rclone-secret --from-file=rclone.conf=./rclone.con
 rm -f rclone.conf
 ```
 
+## Adding clusters
+At this point it is now possible to add and remove clusters using ACM as you see fit.
+
+The most important thing is to define the site=remote and the storageclass label that the cluster will use.
