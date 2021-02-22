@@ -10,3 +10,4 @@ spec:
     matchExpressions: []
     matchLabels:
       storage: hostpath
+      site: remote

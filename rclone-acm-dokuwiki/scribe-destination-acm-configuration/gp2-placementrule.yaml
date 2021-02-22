@@ -10,3 +10,4 @@ spec:
     matchExpressions: []
     matchLabels:
       storage: gp2
+      site: remote
