@@ -8,8 +8,9 @@ metadata:
 spec:
   channel: scribe-system/scribe 
   name: scribe
-  packageFilter:
-    version: "0.1.0"
+  packageOverrides:
+  - packageName: scribe
+    packageAlias: scribe
   placement:
     placementRef:
       kind: PlacementRule
