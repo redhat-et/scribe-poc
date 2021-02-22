@@ -10,4 +10,5 @@ spec:
     copyMethod: None
     capacity: 8Gi
     accessModes: [ReadWriteOnce]
-    destinationPVC: dokuwiki-ocs
+    destinationPVC: dokuwiki-csi
+    storageClassName: gp2-csi
