@@ -15,7 +15,8 @@ data:
     \ storageClassName: gp2-csi\nEOF\nelse\n\tcat <<EOF | kubectl create -f - \n        apiVersion:
     v1\n        kind: PersistentVolumeClaim\n        metadata:\n          name: $PVC_NAME\n
     \       spec:\n          accessModes:\n          - ReadWriteOnce\n          resources:\n
-    \          requests:\n             storage: $SIZE\n\t  storageClassName: gp2-csi\nEOF\nfi\n"
+    \          requests:\n             storage: $SIZE\n           storageClassName:
+    gp2-csi\nEOF\nfi\n"
 kind: ConfigMap
 metadata:
   creationTimestamp: null
