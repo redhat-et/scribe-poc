@@ -4,7 +4,7 @@ rsync the data between the primary and failover cluster. To begin fork the repos
 will need to commit changes that are revelant to your environment.
 
 ## ACM configuration
-Both clusters have been added into ACM already. We will first define the application on the ACM cluster.
+Both clusters have been added into ACM already. We will first define the application on the ACM cluster. Both clusters have been deployed on AWS.
 
 We will need to add the label *purpose: database* and *site: primary* to our primary cluster. This will deploy the 
 application to our cluster.
@@ -18,7 +18,7 @@ oc label managedcluster primary site=primary
 Create the application components for the database application.
 
 ```
-oc create -f database/
+oc create -f acm-database-application/
 ```
 
 After the initial application deployment onto the primary cluster the failover cluster can be
