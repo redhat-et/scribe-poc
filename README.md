@@ -9,7 +9,7 @@ Multiple scenarios are defined in this repository. Below is a breakdown of the s
 
 NOTE: All scenarios require [Scribe Deployment](./scribe-deployment)
 
-[ACM - database Rsync](./acm-application-configuration)
+[ACM - database Rsync](./acm-rsync-database)
 
 [ACM - dokuwiki Rsync](./acm-dokuwiki)
 
