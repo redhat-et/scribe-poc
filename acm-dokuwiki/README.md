@@ -7,7 +7,7 @@ Depending on the storageclass your cluster has as default the value may need to 
 This requires using the replace functionality of RHACM. Follow the notes [here](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.1/html/manage_applications/managing-applications#subscribing-git-resources)
 
 ## Clusters
-Using either RHACM or importing clusters create two clusters primary and failover.
+Using either RHACM or importing clusters, create two clusters primary and failover.
 
 ### Base configurations
 We need to define the Scribe deployment and Storage class modifcaitions as an application in RHACM.
@@ -39,7 +39,7 @@ Before deploying the applications within RHACM define a [route specific to your 
 The application can now be defined within RHACM.
 
 ```
-oc create -f ./acm-application-configuration
+oc create -f ./acm-app-configuration/
 ```
 
 ### Failover
@@ -83,8 +83,9 @@ vi source-rsync/replicationsource.yaml
 
 While on the Failover cluster also obtain the secret.
 ```
-$ kubectl get secret -n dest scribe-rsync-dest-src-database-destination -o yaml > ./acm-dokuwiki/source-rsync/secret.yaml
-$ vi ./acm-dokuwiki/source-rsync/secret.yaml
+export KUBECONFIG=/tmp/failover
+oc get secrets -n dokuwiki scribe-rsync-dest-src-database-destination -o yaml > ./source-rsync/secret.yaml
+vi ./acm-dokuwiki/source-rsync/secret.yaml
 # ^^^ remove the owner reference (.metadata.ownerReferences)
 ```
 
