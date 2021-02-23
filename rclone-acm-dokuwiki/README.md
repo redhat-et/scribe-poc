@@ -1,5 +1,5 @@
 # RHACM with Rclone
-This scenario will use a source cluster running SCribe, OCS, and RHACM to create and manage applications
+This scenario will use a source cluster running Scribe, OCS, and RHACM to create and manage applications
 and data on new clusters.
 
 We also assume that RHACM has been deployed.
@@ -64,12 +64,36 @@ acl = private
 
 Create a secret based on the `rclone.conf` file and then remove the file.
 ```
-kubectl create secret generic rclone-secret --from-file=rclone.conf=./rclone.conf -n dokuwiki --dry-run > destination-rlcone/rclone.yaml
-kubectl create secret generic rclone-secret --from-file=rclone.conf=./rclone.conf -n dokuwiki --dry-run > source-rlcone/rclone.yaml
+oc create secret generic rclone-secret --from-file=rclone.conf=./rclone.conf -n dokuwiki --dry-run > destination-rlcone/rclone.yaml
+oc create secret generic rclone-secret --from-file=rclone.conf=./rclone.conf -n dokuwiki --dry-run > source-rlcone/rclone.yaml
 rm -f rclone.conf
 ```
 
-## Adding clusters
-At this point it is now possible to add and remove clusters using ACM as you see fit.
+Commit the rclone secret to git.
+```
+git add destination-rlcone/rclone.yaml source-rlcone/rclone.yaml
+git commit -m 'addition of rclone secret'
+git push origin main
+```
 
-The most important thing is to define the site=remote and the storageclass label that the cluster will use.
+It's not time to create the replication application. This will place the Scribe `replicationdestination` and `replicationsource` objects.
+
+```
+oc create -f scribe-source-acm-configuration/
+oc create -f scribe-destination-acm-configuration/
+```
+
+## Dokuwiki
+At this point you can make modifications to the Dokuwiki site.
+
+There is one hack that is required. Due to how rclone handles storage replication. Empty directories are not copied so we will
+need to place in a file so that a directory will be copied.
+
+```
+oc rsh -n dokuwiki `oc get pods -n dokuwiki |grep my-release | awk '{print $1}'` bash -c 'echo "smiley" > /bitnami/dokuwiki/lib/images/smileys/local/smiley'
+```
+
+## Adding clusters
+Now possible to add and remove clusters using ACM as you see fit.
+
+The most important thing is to define the site=remote and the storage=xxx label specifying the storage the cluster will use.
