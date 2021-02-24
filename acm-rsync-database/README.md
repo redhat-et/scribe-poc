@@ -3,6 +3,21 @@ The following demonstration will use ACM to manage the placement of applications
 rsync the data between the primary and failover cluster. To begin fork the repository as you
 will need to commit changes that are revelant to your environment.
 
+
+## Base configurations
+We need to define the Scribe deployment and Storage class modifcaitions as an application in RHACM.
+
+The storage class modifications are in place because they contain a `volumesnapshotclass` definition and
+modifications to the default storage class to use CSI when available.
+
+```
+oc create -f ../storage-class-modifications/storage-class-acm-definition
+```
+
+Scribe can now be deployed as well
+```
+oc create -f ../scribe-deployment
+```
 ## ACM configuration
 Both clusters have been added into ACM already. We will first define the application on the ACM cluster. Both clusters have been deployed on AWS.
 
@@ -13,6 +28,7 @@ application to our cluster.
 export KUBECONFIG=/tmp/acm
 oc label managedcluster primary purpose=database
 oc label managedcluster primary site=primary
+oc label managedcluster primary storage=gp2
 ```
 
 Create the application components for the database application.
@@ -27,13 +43,8 @@ labeled so that it can be managed by the placement rules with ACM.
 ```
 oc label managedcluster failover purpose=database
 oc label managedcluster failover site=failover
+oc label managedcluster primary storage=gp2
 ```
-
-## Scribe deployment
-Following the steps locate at https://scribe-replication.readthedocs.io/en/latest/openshift/index.html
-to deploy the Scribe components to your cluster. Ensure that you deploy to both the primary and failover
-clusters before continuing. 
-
 ## ACM configuration for Scribe
 The failover cluster is required to be deployed first because we need to derive the value of
 the load balancer service to give to our primary cluster. The following will deploy the Scribe
@@ -66,19 +77,16 @@ Extract the SSH keys from the failover repository. They will be saved within the
 
 ```
 export KUBECONFIG=/tmp/failover
-oc get secret -o yaml scribe-rsync-dest-dest-database-destination > destination-rsync/scribe-rsync-dest-dest-uploader-destination.yaml
-oc get secret -o yaml scribe-rsync-dest-main-database-destination > destination-rsync/scribe-rsync-dest-main-uploader-destination.yaml
-oc get secret -o yaml scribe-rsync-dest-src-database-destination > destination-rsync/scribe-rsync-dest-src-uploader-destination.yaml
-oc get secret -o yaml scribe-rsync-dest-src-database-destination > source-rsync/scribe-rsync-dest-src-uploader-destination.yaml
+oc get secrets -n database scribe-rsync-dest-src-database-destination -o yaml > ./source-rsync/secret.yaml
+vi ./source-rsync/secret.yaml
+# ^^^ remove the owner reference (.metadata.ownerReferences)
 ```
 
 Commit the changes to your git repository.
 
 ```
-git add source-rsync/replicationsource.yaml destination-rsync/scribe-rsync-dest-dest-uploader-destination.yaml \
-destination-rsync/scribe-rsync-dest-main-uploader-destination.yaml destination-rsync/scribe-rsync-dest-src-uploader-destination.yaml \
-source-rsync/scribe-rsync-dest-src-uploader-destination.yaml
-git commit -m 'secrets and loadbalancer to be used by scribe'
+git add source-rsync/replicationsource.yaml source-rsync/secret.yaml
+git commit -m 'secret and loadbalancer to be used by scribe'
 git push origin main
 ```
 

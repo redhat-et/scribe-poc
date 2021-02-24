@@ -85,7 +85,7 @@ While on the Failover cluster also obtain the secret.
 ```
 export KUBECONFIG=/tmp/failover
 oc get secrets -n dokuwiki scribe-rsync-dest-src-database-destination -o yaml > ./source-rsync/secret.yaml
-vi ./acm-dokuwiki/source-rsync/secret.yaml
+vi source-rsync/secret.yaml
 # ^^^ remove the owner reference (.metadata.ownerReferences)
 ```
 
