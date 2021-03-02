@@ -1,0 +1,13 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: uploader-destination
+  namespace: uploader
+spec:
+  rsync:
+    serviceType: LoadBalancer
+    destinationPVC: uploader-pvc
+    copyMethod: None
+    capacity: 20Gi
+    accessModes: [ReadWriteOnce]
