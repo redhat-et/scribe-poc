@@ -17,6 +17,8 @@ NOTE: All scenarios require [Scribe Deployment](./scribe-deployment)
 
 [Modify backing Storage of a PVC](./local-cluster-pvc-change)
 
+[Copy Data into Kubernetes](./external-rsync)
+
 
 ## Components and helpers
 [ACM - Modify Storage Class](./storage-class-acm-definition)
