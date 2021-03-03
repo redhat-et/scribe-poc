@@ -5,6 +5,7 @@ metadata:
   labels:
     app: uploader
   name: uploader
+  namespace: uploader
 spec:
   replicas: 1
   selector:
@@ -17,6 +18,9 @@ spec:
       labels:
         app: uploader
     spec:
+      securityContext:
+        runAsUser: 1000580000
+        fsGroup: 1000580000
       containers:
       - image: quay.io/rcook/tools:php-demo
         name: tools
@@ -25,7 +29,7 @@ spec:
         volumeMounts:
           - name: uploader-persistent
             mountPath: /opt/app-root/src/uploaded
-     volumes:
-       - name: uploader-persistent
-         persistentVolumeClaim:
-           claimName: uploader-pvc
+      volumes:
+        - name: uploader-persistent
+          persistentVolumeClaim:
+            claimName: uploader-pvc
