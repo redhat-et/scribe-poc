@@ -1,0 +1,15 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: uploader-pvc 
+  namespace: uploader
+spec:
+  sourcePVC: uploader-pvc
+  trigger:
+    schedule: "*/2 * * * *"
+  rsync:
+    sshKeys: scribe-key
+    address: 10.2.155.239 
+    port: 31697
+    copyMethod: None

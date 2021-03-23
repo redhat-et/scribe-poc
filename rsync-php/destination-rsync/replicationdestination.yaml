@@ -1,0 +1,12 @@
+---
+apiVersion: scribe.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: uploader-pvc 
+  namespace: uploader 
+spec:
+  rsync:
+    serviceType: NodePort 
+    copyMethod: None 
+    destinationPVC: uploader-pvc
+    sshKeys: scribe-key
