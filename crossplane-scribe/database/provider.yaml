@@ -1,10 +1,16 @@
-apiVersion: aws.crossplane.io/v1alpha3
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: aws-config
+spec:
+  securityContext: {}
+  podSecurityContext: {}
+---
+apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: aws-provider
+  name: provider-aws
 spec:
-  region: us-east-1
-  credentialsSecretRef:
-    namespace: database 
-    name: aws-creds
-    key: key
+  package: crossplane/provider-aws:v0.17.0
+  controllerConfigRef:
+    name: aws-config

@@ -19,6 +19,6 @@ spec:
   writeConnectionSecretToRef:
     namespace: database
     name: aws-rdspostgresql-conn
-  providerRef:
+  providerConfigRef:
     name: aws-provider
   reclaimPolicy: Delete

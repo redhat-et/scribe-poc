@@ -9,5 +9,5 @@ spec:
     subnetIdRefs:
       - name: subnet1 
       - name: subnet2
-  providerRef:
+  providerConfigRef:
     name: aws-provider

@@ -12,5 +12,5 @@ spec:
     tags:
     - key: Name
       value: database-vpc
-  providerRef:
+  providerConfigRef:
     name: aws-provider 

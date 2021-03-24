@@ -15,5 +15,5 @@ spec:
         ipProtocol: tcp
         ipRanges:
           - cidrIp: 0.0.0.0/0
-  providerRef:
+  providerConfigRef:
     name: aws-provider
