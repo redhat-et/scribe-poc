@@ -6,7 +6,7 @@ metadata:
   namespace: uploader 
 spec:
   rsync:
-    serviceType: NodePort 
+    serviceType: LoadBalancer
     copyMethod: None 
     destinationPVC: uploader-pvc
     sshKeys: scribe-key

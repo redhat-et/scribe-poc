@@ -1,0 +1,19 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: database-sg
+spec:
+  forProvider:
+    region: us-east-1
+    vpcIdRef:
+      name: database-vpc  
+    groupName: database-sg
+    description: db to Kube
+    ingress:
+      - fromPort: 3306
+        toPort: 3306
+        ipProtocol: tcp
+        ipRanges:
+          - cidrIp: 0.0.0.0/0
+  providerRef:
+    name: aws-provider

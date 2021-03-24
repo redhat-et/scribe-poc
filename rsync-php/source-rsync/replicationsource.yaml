@@ -10,6 +10,5 @@ spec:
     schedule: "*/2 * * * *"
   rsync:
     sshKeys: scribe-key
-    address: 10.2.155.239 
-    port: 31697
+    address: a42e86e2cda3f423691ac101a7d19c38-475e81bca861123f.elb.us-east-2.amazonaws.com 
     copyMethod: None

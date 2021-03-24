@@ -16,3 +16,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: transfer
+  namespace: dokuwiki

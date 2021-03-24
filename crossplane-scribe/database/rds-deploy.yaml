@@ -1,0 +1,24 @@
+apiVersion: database.aws.crossplane.io/v1beta1
+kind: RDSInstance
+metadata:
+  name: rdspostgresql
+  namespace: database
+spec:
+  forProvider:
+    dbInstanceClass: db.t2.small
+    masterUsername: dbuser 
+    publiclyAccessible: true
+    multiAZ: true
+    allocatedStorage: 20
+    engine: mysql
+    skipFinalSnapshotBeforeDeletion: true
+    dbSubnetGroupNameRef:
+      name: db-subnet-group
+    vpcSecurityGroupIDRefs:
+      - name: database-sg
+  writeConnectionSecretToRef:
+    namespace: database
+    name: aws-rdspostgresql-conn
+  providerRef:
+    name: aws-provider
+  reclaimPolicy: Delete

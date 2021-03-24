@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  labels:
+    app: crossplane
+  name: crossplane-placement-0
+  namespace: openshift-operators
+spec:
+  clusterSelector:
+    matchExpressions: []
+    matchLabels:
+      vendor: OpenShift
