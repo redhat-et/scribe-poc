@@ -7,7 +7,7 @@ spec:
     region: us-east-1
     vpcIdRef:
       name: database-vpc
-  providerRef:
+  providerConfigRef:
     name: aws-provider
 --- 
 apiVersion: ec2.aws.crossplane.io/v1alpha4
@@ -20,7 +20,7 @@ spec:
     routes:
       - destinationCidrBlock: 0.0.0.0/0
         gatewayIdRef:
-          name: production-internetgateway
+          name: database-internetgateway
     associations:
       - subnetIdRef:
           name: subnet1 
@@ -28,5 +28,5 @@ spec:
           name: subnet2
     vpcIdRef:
       name: database-vpc
-  providerRef:
+  providerConfigRef:
     name: aws-provider

@@ -10,7 +10,7 @@ spec:
     vpcIdRef:
       name: database-vpc
     mapPublicIPOnLaunch: true
-  providerRef:
+  providerConfigRef:
     name: aws-provider
 ---
 apiVersion: ec2.aws.crossplane.io/v1beta1
@@ -25,5 +25,5 @@ spec:
     vpcIdRef:
       name: database-vpc
     mapPublicIPOnLaunch: true
-  providerRef:
+  providerConfigRef:
     name: aws-provider
