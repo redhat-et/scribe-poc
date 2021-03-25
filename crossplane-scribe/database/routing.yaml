@@ -20,7 +20,7 @@ spec:
     routes:
       - destinationCidrBlock: 0.0.0.0/0
         gatewayIdRef:
-          name: production-internetgateway
+          name: database-internetgateway
     associations:
       - subnetIdRef:
           name: subnet1 
