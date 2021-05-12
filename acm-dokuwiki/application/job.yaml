@@ -12,7 +12,7 @@ spec:
         command: ["/bin/bash","/mover/transfer.sh"]
         env:
         - name: DESTINATION
-          value: database-destination
+          value: database
         - name: PVC_NAME
           value: dokuwiki 
         - name: SIZE
