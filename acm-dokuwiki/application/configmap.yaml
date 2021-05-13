@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   transfer.sh: "#!/bin/bash\nif [[ $(kubectl get pvc $PVC_NAME) ]]; then\n    exit\nelif
     [[ $(kubectl get replicationdestination $DESTINATION | grep -v NAME |awk '{print
-    $1}') == $DESTINATION ]]; then until kubectl get volumesnapshots --template {{.status.readyToUse}}
+    $1}') ]]; then until kubectl get volumesnapshots --template {{.status.readyToUse}}
     `kubectl get replicationdestination $DESTINATION --template={{.status.latestImage.name}}`;
     do echo \\\"waiting for snapshot to be ready\\\"; sleep 1; done\n    cat <<EOF
     | kubectl create -f - \n    apiVersion: v1\n    kind: PersistentVolumeClaim\n
@@ -12,8 +12,8 @@ data:
     --template={{.status.latestImage.name}}`\n       resources:\n         requests:\n
     \          storage: $SIZE\nEOF\nelse\n   cat <<EOF | kubectl create -f -\n   apiVersion:
     v1\n   kind: PersistentVolumeClaim\n   metadata:\n     name: $PVC_NAME\n   spec:\n
-    \    accessModes:\n    - ReadWriteOnce\n    resources:\n      requests:\n        storage:
-    $SIZE\n    storageClassName: gp2-csi\nEOF\nfi\n"
+    \    accessModes:\n      - ReadWriteOnce\n     resources:\n       requests:\n
+    \        storage: $SIZE\n     storageClassName: gp2-csi\nEOF\nfi\n"
 kind: ConfigMap
 metadata:
   creationTimestamp: null
