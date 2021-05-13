@@ -5,15 +5,15 @@ data:
     $1}') == $DESTINATION ]]; then until kubectl get volumesnapshots --template {{.status.readyToUse}}
     `kubectl get replicationdestination $DESTINATION --template={{.status.latestImage.name}}`;
     do echo \\\"waiting for snapshot to be ready\\\"; sleep 1; done\n    cat <<EOF
-    | kubectl create -f - \n    apiVersion:\n    kind: PersistentVolumeClaim\n    metadata:\n
-    \     name: $PVC_NAME\n    spec:\n       accessModes:\n       - ReadWriteOnce\n
-    \      dataSource:\n         kind: VolumeSnapshot\n         apiGroup: snapshot.storage.k8s.io\n
-    \        name: `kubectl get replicationdestination $DESTINATION --template={{.status.latestImage.name}}`\n
-    \      resources:\n         requests:\n           storage: $SIZE\nEOF\nelse\n
-    \  cat <<EOF | kubectl create -f -\n   apiVersion: v1\n   kind: PersistentVolumeClaim\n
-    \  metadata:\n     name: $PVC_NAME\n   spec:\n     accessModes:\n    - ReadWriteOnce\n
-    \   resources:\n      requests:\n        storage: $SIZE\n    storageClassName:
-    gp2-csi\nEOF\nfi\n"
+    | kubectl create -f - \n    apiVersion: v1\n    kind: PersistentVolumeClaim\n
+    \   metadata:\n      name: $PVC_NAME\n    spec:\n       accessModes:\n       -
+    ReadWriteOnce\n       dataSource:\n         kind: VolumeSnapshot\n         apiGroup:
+    snapshot.storage.k8s.io\n         name: `kubectl get replicationdestination $DESTINATION
+    --template={{.status.latestImage.name}}`\n       resources:\n         requests:\n
+    \          storage: $SIZE\nEOF\nelse\n   cat <<EOF | kubectl create -f -\n   apiVersion:
+    v1\n   kind: PersistentVolumeClaim\n   metadata:\n     name: $PVC_NAME\n   spec:\n
+    \    accessModes:\n    - ReadWriteOnce\n    resources:\n      requests:\n        storage:
+    $SIZE\n    storageClassName: gp2-csi\nEOF\nfi\n"
 kind: ConfigMap
 metadata:
   creationTimestamp: null
