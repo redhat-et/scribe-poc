@@ -55,6 +55,8 @@ spec:
         - name: DOKUWIKI_WIKI_NAME
           value: My Wiki
         image: docker.io/bitnami/dokuwiki:20200729.0.0-debian-10-r121
+        securityContext:
+          runAsUser: 1000760000
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 6
