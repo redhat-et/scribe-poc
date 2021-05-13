@@ -16,7 +16,7 @@ spec:
         - name: PVC_NAME
           value: dokuwiki 
         - name: SIZE
-          value: 8Gi
+          value: 3Gi
         volumeMounts:
         - name: transfer-volume
           mountPath: /mover
