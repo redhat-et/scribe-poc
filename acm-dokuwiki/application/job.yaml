@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: snapshot-to-pvc
-        image: ibm/kubectl
+        image: registry.redhat.io/openshift4/ose-cli 
         command: ["/bin/bash","/mover/transfer.sh"]
         env:
         - name: DESTINATION
