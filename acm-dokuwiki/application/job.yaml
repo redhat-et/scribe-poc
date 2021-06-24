@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: snapshot-to-pvc
-        image: quay.io/octo-emerging/gitops-primer-extract:latest
+        image: ibm/kubectl
         command: ["/bin/bash","/mover/transfer.sh"]
         env:
         - name: DESTINATION
