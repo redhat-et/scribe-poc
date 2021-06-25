@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: snapshot-to-pvc
-        image: alpine/k8s
+        image: docker.io/alpine/k8s
         command: ["/bin/bash","/mover/transfer.sh"]
         env:
         - name: DESTINATION
