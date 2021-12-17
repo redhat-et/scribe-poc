@@ -4,6 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: dokuwiki
   name: dokuwiki-deployment
   labels:
     app: dokuwiki
@@ -46,6 +47,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: dokuwiki
   name: dokuwiki-service
   labels:
     app: dokuwiki
@@ -62,6 +64,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: dokuwiki
   name: dokuwiki-pvc
 spec:
   accessModes:
