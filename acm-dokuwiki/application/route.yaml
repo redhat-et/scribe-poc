@@ -7,9 +7,9 @@ metadata:
   namespace: dokuwiki
 spec:
   port:
-    targetPort: 8080
+    targetPort: 80
   to:
     kind: Service
-    name: dokuwiki
+    name: dokuwiki-service
     weight: 100
   wildcardPolicy: None
