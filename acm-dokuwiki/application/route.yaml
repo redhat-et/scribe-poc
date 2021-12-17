@@ -1,15 +1,16 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
+  creationTimestamp: null
   labels:
-    app.kubernetes.io/name: dokuwiki
-  name: dokuwiki
-  namespace: dokuwiki
+    app: dokuwiki
+    app.kubernetes.io/part-of: dokuwiki
+  name: dokuwiki-deployment
 spec:
   port:
-    targetPort: 80
+    targetPort: port-1
   to:
-    kind: Service
-    name: dokuwiki-service
-    weight: 100
-  wildcardPolicy: None
+    kind: ""
+    name: dokuwiki-deployment
+    weight: null
+status: {}
