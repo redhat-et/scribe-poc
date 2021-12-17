@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
 metadata:
   annotations:
-    openshift.io/sa.scc.mcs: s0:c27,c14
-    openshift.io/sa.scc.supplemental-groups: 1000660000/10000
-    openshift.io/sa.scc.uid-range: 1000660000/10000
+    openshift.io/sa.scc.mcs: s0:c27,c19
+    openshift.io/sa.scc.supplemental-groups: 1000740000/10000
+    openshift.io/sa.scc.uid-range: 1000740000/10000
   name: dokuwiki
