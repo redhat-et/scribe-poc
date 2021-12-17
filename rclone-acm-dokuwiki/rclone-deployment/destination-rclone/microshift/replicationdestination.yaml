@@ -1,16 +1,17 @@
 ---
 apiVersion: volsync.backube/v1alpha1
-kind: ReplicationSource
+kind: ReplicationDestination
 metadata:
-  name: database-source 
-  namespace: dokuwiki 
+  name: database-destination
+  namespace: dokuwiki-pvc 
 spec:
-  sourcePVC: dokuwiki-pvc
   trigger:
     schedule: "*/5 * * * *"
   rclone:
     rcloneConfigSection: "aws-s3-bucket"
     rcloneDestPath: "rcook-backup"
     rcloneConfig: "rclone-secret"
-    copyMethod: Snapshot
-    volumeSnapshotClassName: csi-aws-vsc
+    copyMethod: Snapshot 
+    accessModes: [ReadWriteOnce]
+    capacity: 8Gi
+    volumeSnapshotClassName: csi-hostpath-snapclass
