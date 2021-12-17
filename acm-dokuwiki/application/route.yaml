@@ -6,7 +6,6 @@ metadata:
   name: dokuwiki
   namespace: dokuwiki
 spec:
-  host: dokuwiki.octo.eng.rdu2.redhat.com
   port:
     targetPort: 8080
   to:
