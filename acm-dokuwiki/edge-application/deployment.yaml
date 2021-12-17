@@ -100,6 +100,8 @@ spec:
         ip: 127.0.0.1
       restartPolicy: Always
       schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1000740000
       terminationGracePeriodSeconds: 30
       volumes:
       - name: dokuwiki-data
