@@ -7,7 +7,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp2-csi
   resources:
     requests:
       storage: 20Gi
