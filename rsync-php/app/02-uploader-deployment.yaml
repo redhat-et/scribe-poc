@@ -22,7 +22,7 @@ spec:
         runAsUser: 1000580000
         fsGroup: 1000580000
       containers:
-      - image: quay.io/rcook/tools:php-demo1
+      - image: quay.io/rcook/tools:php-demo
         name: tools
         ports:
         - containerPort: 8080
