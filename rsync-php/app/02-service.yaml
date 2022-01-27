@@ -5,7 +5,7 @@ metadata:
   labels:
     app: uploader
   name: uploader
-  namespace: uploader
+  namespace: uploader1
 spec:
   ports:
   - port: 8080
