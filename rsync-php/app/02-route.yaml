@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: uploader
-  namespace: uploader
+  namespace: uploader1
 spec:
   host: uploader.octo.eng.rdu2.redhat.com
   port:
